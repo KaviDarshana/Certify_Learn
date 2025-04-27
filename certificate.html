@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Certify Learn - Certificate of Completion</title>
+  <meta name="description" content="Certificate HTML page with jsPDF functionality that generates a downloadable certificate based on the completed exam category">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@google/fonts@3.3.1/css?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: linear-gradient(to right, #474749 0%, #ced9e0 100%);
+      min-height: 100vh;
+    }
+    .certificate-shadow {
+      box-shadow: 0 12px 50px 0 rgba(0,10,60,.07), 0 4px 12px 0 rgba(0,0,0,.08);
+    }
+    @media print {
+      html, body {
+        background: #fff !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="flex items-center justify-center w-full min-h-screen py-8 px-2">
+    <div class="bg-white rounded-2xl certificate-shadow p-10 w-full max-w-2xl border-4 border-blue-200 text-center">
+      <div class="mb-6">
+        <i class="fa-solid fa-award text-yellow-500 text-6xl mb-3"></i>
+        <h1 class="text-3xl md:text-4xl font-bold tracking-wide text-gray-800 uppercase font-montserrat mb-2">Certificate of Completion</h1>
+        <p class="text-lg md:text-xl font-light text-gray-600 mb-3">This certificate is proudly presented to</p>
+        <div class="my-6">
+          <input id="studentName" type="text" placeholder="Your Name" class="border-b-2 border-blue-400 outline-none focus:border-blue-600 px-2 py-1 text-2xl font-bold text-center w-64 transition" maxlength="32">
+        </div>
+        <p class="text-md md:text-lg text-gray-600 mb-4 font-serif">For successfully completing the</p>
+        <h2 id="certificateCategory" class="text-2xl font-semibold text-blue-700 mb-6 min-h-12">Loading...</h2>
+        <div class="mb-8">
+          <p class="text-base text-gray-500 font-light">Date: <span id="date"></span></p>
+        </div>
+      </div>
+      <div class="flex justify-center items-center mt-8 mb-4">
+        <button id="downloadBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-xl shadow-lg transition text-lg flex items-center gap-2">
+          <i class="fa-solid fa-download"></i>
+          Download as PDF
+        </button>
+      </div>
+      <div class="flex flex-col items-center text-xs mt-4 text-gray-400 italic">
+        <span>
+          <i class="fa-solid fa-certificate text-yellow-400"></i>
+          Powered by Certify Learn
+        </span>
+        <span>
+          Certificate is valid for professional accreditation and personal achievement.
+        </span>
+      </div>
+    </div>
+  </div>
+  <script>
+    function getCategoryName() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const category = urlParams.get('category');
+      if (!category) return null;
+      return category.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    }
+    function getTodayStr() {
+      const today = new Date();
+      return today.toLocaleDateString(undefined, {
+        year: 'numeric', month: 'long', day: 'numeric'
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const catName = getCategoryName() || "Exam";
+      document.getElementById('certificateCategory').textContent = catName;
+      document.getElementById('date').textContent = getTodayStr();
+      let defaultName = window.localStorage.getItem('certificateStudentName') || '';
+      document.getElementById('studentName').value = defaultName;
+
+      document.getElementById('studentName').addEventListener('input', function(e) {
+        window.localStorage.setItem('certificateStudentName', e.target.value || '');
+      });
+
+      document.getElementById('downloadBtn').addEventListener('click', function () {
+        const { jsPDF } = window.jspdf;
+        const userName = document.getElementById('studentName').value.trim() || "Student";
+        const category = document.getElementById('certificateCategory').textContent.trim();
+        const dateStr = document.getElementById('date').textContent.trim();
+        const doc = new jsPDF({
+          orientation: 'landscape',
+          unit: 'mm',
+          format: 'a4'
+        });
+
+        doc.setDrawColor(51, 153, 255);
+        doc.setLineWidth(2.5);
+        doc.roundedRect(10, 10, 277, 190, 8, 8, 'S');
+
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(16, 0, 156);
+        doc.setFontSize(25);
+        doc.text('Certify Learn', 148, 36, { align: 'center' });
+
+        doc.setTextColor(25, 45, 80);
+        doc.setFontSize(30);
+        doc.text('Certificate of Completion', 148, 52, { align: 'center' });
+
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(70, 70, 70);
+        doc.setFontSize(16);
+        doc.text('This certificate is proudly presented to', 148, 67, { align: 'center' });
+
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(51, 153, 255);
+        doc.setFontSize(24);
+        doc.text(userName, 148, 85, { align: 'center' });
+
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(70, 70, 70);
+        doc.setFontSize(15);
+        doc.text('For successfully completing the', 148, 101, { align: 'center' });
+
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(66, 99, 235);
+        doc.setFontSize(18);
+        doc.text(category, 148, 114, { align: 'center' });
+
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(120, 120, 120);
+        doc.setFontSize(13);
+        doc.text('Date: ' + dateStr, 25, 172, { align: 'left' });
+
+        doc.setFontSize(16);
+        doc.setTextColor(16, 0, 156);
+        doc.setFont('helvetica', 'bold');
+        doc.text('Certify Learn', 271, 164, { align: 'right' });
+        doc.setFontSize(11);
+        doc.setFont('helvetica', 'italic');
+        doc.setTextColor(150, 170, 200);
+        doc.text('Authorized Signature', 271, 172, { align: 'right' });
+        const safeName = userName.replace(/[^a-z0-9_\- ]/gi, '_');
+        doc.save(`Certificate_${safeName}_${category.replace(/\s+/g,'_')}.pdf`);
+      });
+    });
+  </script>
+</body>
+</html>

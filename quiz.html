@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Quiz Management App</title>
+  
+    <link rel="stylesheet" href="css/quiz.css">
+</head>
+<body>
+    <div class="container quiz-container">
+        <div id="quiz-section">
+            <h1 id="category-title">Quiz</h1>
+            <div id="question-container">
+                <h2 id="question-text">Loading question...</h2>
+                <div id="options-container">
+                </div>
+                <button id="next-btn" style="display: none;">Next Question</button>
+            </div>
+            <div id="result-section" style="display: none;">
+                <h2>Quiz Completed!</h2>
+                <p id="score-text"></p>
+                <button id="certificate-btn" style="display: none;">Get Certificate</button>
+            </div>
+            <button id="try-again-btn" style="display: none;">Try Again</button>
+        </div>
+    </div>
+
+    <script src="js/quiz.js"></script>
+</body>
+</html>

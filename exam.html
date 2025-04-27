@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Management App - Exam Categories</title>
+    
+    
+    <style>
+             * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg,rgb(11, 47, 60) 0%,rgba(0, 34, 68, 0.83) 100%);
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #ffffff;
+            font-size: 2.5rem;
+        }
+        
+        .exam-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .exam-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .exam-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .exam-card h2 {
+            color: #5f0702;
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
+        }
+        
+        .exam-card p {
+            color: #7f8c8d;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+        
+        .enroll-btn {
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+        
+        .enroll-btn:hover {
+            background-color: #272a2c;
+        }
+        
+        a {
+            display: block;
+            text-align: center;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #fff42c;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .exam-categories {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Choose Your Exam Category</h1>
+        <div class="exam-categories">
+            <div class="exam-card">
+                <h2>Introduction to HTML</h2>
+                <p>Test your basic HTML knowledge</p>
+                <button class="enroll-btn" data-category="html-intro">Enroll</button>
+            </div>
+            <div class="exam-card">
+                <h2>Introduction to CSS</h2>
+                <p>Test your basic CSS skills</p>
+                <button class="enroll-btn" data-category="css-intro">Enroll</button>
+            </div>
+            <div class="exam-card">
+                <h2>JavaScript Basics</h2>
+                <p>Test your fundamental JavaScript understanding</p>
+                <button class="enroll-btn" data-category="js-intro">Enroll</button>
+            </div>
+            <div class="exam-card">
+                <h2>Web Design Principles</h2>
+                <p>Learn web design fundamentals</p>
+                <button class="enroll-btn" data-category="web-design">Enroll</button>
+            </div>
+            <div class="exam-card">
+                <h2>Responsive Web Development</h2>
+                <p>Master responsive design techniques</p>
+                <button class="enroll-btn" data-category="responsive-web">Enroll</button>
+        
+            </div>
+            
+        </div>
+        <a href="home.php" >Back to Home</a>
+    </div>
+
+    <script src="js/exam.js"></script>
+</body>
+</html>
