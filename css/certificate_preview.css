@@ -1,0 +1,140 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+/* Container Styling */
+.certificate {
+    background-color: #000000;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 1000px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.certificate:hover {
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.1);
+}
+
+/* Heading */
+.certificate h2 {
+    font-size: 2.7rem;
+    color: #90caf9;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+/* Paragraphs */
+.certificate p {
+    font-size: 1.1rem;
+    margin: 12px 0 25px;
+    color: #ffffff;
+}
+
+/* Certificate Details Box */
+.certificate-details {
+    background-color: #2a2a2a;
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.certificate-details:hover {
+    background-color: #000000;
+}
+
+.certificate-details h3 {
+    font-size: 1.9rem;
+    color: #fdd835;
+    margin-bottom: 10px;
+}
+
+/* Image */
+.certificate img {
+    width: 50%;
+    height: auto;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.749);
+    margin-bottom: 25px;
+    transition: transform 0.3s ease;
+}
+
+.certificate img:hover {
+    transform: scale(1.05);
+}
+
+.testimonials {
+    background-color: #222;
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.testimonials h3 {
+    font-size: 1.8rem;
+    color: #ff0c0c;
+    margin-bottom: 5px;
+}
+
+.testimonials p {
+    font-size: 1.05rem;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.faq {
+    background-color: #2a2a2a;
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.faq h3 {
+    font-size: 1.8rem;
+    color: #ffb74d;
+    margin-bottom: 5px;
+}
+
+.faq dl {
+    margin-top: 5px;
+    text-align: left;
+}
+
+.faq dt {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 5px;
+    color: #eeeeee;
+}
+
+.faq dd {
+    font-size: 1.05rem;
+    color: #bbbbbb;
+    margin-bottom: 5px;
+    margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+    .certificate img {
+        width: 80%;
+    }
+
+    .certificate h2 {
+        font-size: 2rem;
+    }
+
+    .certificate-details h3,
+    .testimonials h3,
+    .faq h3 {
+        font-size: 1.5rem;
+    }
+}

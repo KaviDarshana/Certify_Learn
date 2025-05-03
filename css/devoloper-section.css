@@ -1,0 +1,160 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0d1117;
+    color: #f1f1f1;
+}
+
+.developer {
+    background-color: #161b22;
+    text-align: center;
+    padding: 60px 20px;
+    margin-bottom: 40px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.developer h2 {
+    font-size: 2.8em;
+    margin-bottom: 10px;
+    color: #58a6ff;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    animation: slideUp 0.7s ease-in-out;
+}
+
+.developer > p {
+    margin-bottom: 40px;
+    color: #c9d1d9;
+    font-size: 1.2em;
+    line-height: 1.6;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.team {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.team-member {
+    background-color: #21262d;
+    border-radius: 15px;
+    width: 260px;
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    animation: fadeInUp 0.8s ease-in-out;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.3);
+}
+
+.team-member img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #30363d;
+    transition: border-color 0.3s ease;
+}
+
+.team-member img:hover {
+    border-color: #58a6ff;
+}
+
+.team-member h3 {
+    font-size: 1.4em;
+    margin: 8px 0;
+    color: #f9f9f9;
+}
+
+.team-member p {
+    font-size: 1em;
+    color: #8b949e;
+    margin-bottom: 10px;
+}
+
+.bio {
+    font-size: 0.95em;
+    color: #999;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.linkedin {
+    display: inline-block;
+    font-size: 0.95em;
+    color: #ffffff;
+    background-color: #238636;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.linkedin:hover {
+    background-color: #2ea043;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@media screen and (max-width: 768px) {
+    .team {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-member {
+        width: 90%;
+        max-width: 350px;
+        margin-bottom: 25px;
+    }
+
+    .developer h2 {
+        font-size: 2.2em;
+    }
+
+    .developer > p {
+        font-size: 1.1em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .developer {
+        padding: 30px 15px;
+    }
+
+    .team-member img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .team-member h3 {
+        font-size: 1.2em;
+    }
+}
